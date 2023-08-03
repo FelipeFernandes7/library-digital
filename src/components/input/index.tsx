@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputHTMLAttributes } from "react";
 import { UseFormRegister, FieldError } from "react-hook-form";
@@ -18,9 +19,10 @@ export function Input({
   error,
   ...rest
 }: InputProps) {
+  let registers = register(name)
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      {register(name) && name ? (
+      {registers && name ? (
         <input
           {...rest}
           style={{
