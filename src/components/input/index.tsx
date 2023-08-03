@@ -1,41 +1,53 @@
-import { InputHTMLAttributes } from 'react'
-import {
-  FieldValues,
-  useFormContext,
-  UseFormRegister,
-  FieldError,
-} from 'react-hook-form'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { InputHTMLAttributes } from "react";
+import { UseFormRegister, FieldError } from "react-hook-form";
+import { ErrorMessage } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string
-  name: string
-  type?: string
-  registerOptions?: Parameters<UseFormRegister<FieldValues>>[1]
-  error: FieldError | undefined
+  label: string;
+  name: string;
+  register: UseFormRegister<any>;
+  error?: FieldError | undefined;
 }
 
 export function Input({
+  register,
   label,
   name,
   type,
-  registerOptions,
   error,
   ...rest
 }: InputProps) {
-  const { register } = useFormContext<FieldValues>()
-
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      <input
-        {...rest}
-        type={type}
-        id={name}
-        {...register(name, registerOptions)}
-      />
-      {error && <p>{error.message}</p>}
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      {register && name ? (
+        <input
+          {...rest}
+          style={{
+            width: "100",
+            border: error ? "1px solid #AF1919" : "1px solid #7d5fff",
+          }}
+          type={type}
+          {...(label ? { id: name } : {})}
+          {...register(name, type === "number" ? { valueAsNumber: true } : {})}
+        />
+      ) : (
+        <input
+          {...rest}
+          style={{
+            width: "100",
+            border: error ? "1px solid #AF1919" : "1px solid #7d5fff",
+          }}
+          type={type}
+          {...(label ? { id: name } : {})}
+          {...rest}
+        />
+      )}
+      {!!error && (
+        <ErrorMessage>
+          <p>{error.message}</p>
+        </ErrorMessage>
+      )}
     </div>
-  )
+  );
 }
-
-export default Input

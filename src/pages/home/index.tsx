@@ -1,16 +1,16 @@
-import { PaymentCard } from '../../components/paymentCard'
-import { Background } from '../../components/background'
-import { Container } from '../../components/container'
-import { Header } from '../../components/header'
-import { Footer } from '../../components/footer'
+import { PaymentCard } from "../../components/paymentCard";
+import { Background } from "../../components/background";
+import { Container } from "../../components/container";
+import { Header } from "../../components/header";
+import { Footer } from "../../components/footer";
 
-import { BsCreditCard } from 'react-icons/bs'
-import { FaPix } from 'react-icons/fa6'
-import { MdOutlinePayments } from 'react-icons/md'
+import { BsCreditCard } from "react-icons/bs";
+import { FaPix } from "react-icons/fa6";
+import { MdOutlinePayments } from "react-icons/md";
 
-import { ButtonBox, Center, Content } from './styles'
+import { ButtonBox, Center, Content } from "./styles";
 
-import bookImg from '../../assets/undraw_reading_time_re_phf7.svg'
+import bookImg from "../../assets/undraw_reading_time_re_phf7.svg";
 
 export function Home() {
   return (
@@ -37,14 +37,14 @@ export function Home() {
       </Background>
       <Footer>
         <Center>
-          <PaymentCard text={'Aceitamos Pix'} icon={<FaPix />} />
+          <PaymentCard text={"Aceitamos Pix"} icon={<FaPix />} />
           <PaymentCard
-            text={'Parcelamos em até 10X sem juros'}
+            text={"Parcelamos em até 10X sem juros"}
             icon={<BsCreditCard />}
           />
-          <PaymentCard text={'Aceitamos Boleto'} icon={<MdOutlinePayments />} />
+          <PaymentCard text={"Aceitamos Boleto"} icon={<MdOutlinePayments />} />
         </Center>
       </Footer>
     </>
-  )
+  );
 }
