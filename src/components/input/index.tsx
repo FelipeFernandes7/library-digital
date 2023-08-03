@@ -20,7 +20,7 @@ export function Input({
 }: InputProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      {register && name ? (
+      {register(name) && name ? (
         <input
           {...rest}
           style={{
